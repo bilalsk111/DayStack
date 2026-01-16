@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Productivity Hub</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+<body>
+
+<div class="app-container">
+
+  <main id="dashboard">
+
+    <header>
+      <div class="brand">
+        <h1>DayStack</h1>
+        <p>RELATIONAL PLANNER</p>
+      </div>
+
+      <div class="theme-toggle" id="theme-toggle">
+        <span class="moon">🌙</span>
+        <span class="sun">☀</span>
+        <div class="toggle-ball"></div>
+      </div>
+    </header>
+
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+
+      <div class="time-card">
+       <div class="intro">
+         <h3>Hy,</h3>
+        <span id="name-output">Guest</span>
+        <button id="change-name-btn">
+          <i class="ri-edit-line"></i>
+        </button>
+       </div>
+
+        <h1 id="time-main">00:00</h1>
+        <span id="day-text"></span>
+        <p id="date-display">January 01, 2026</p>
+      </div>
+
+      <div class="weather-card">
+        <div class="weather-top">
+          <input type="text" id="city-input" placeholder="Search City..." />
+          <i class="ri-search-line" id="weather-search"></i>
+        </div>
+
+        <div class="weather-info">
+          <h2 id="temp-display">--°</h2>
+
+          <div class="weather-meta">
+            <span id="weather-cond">Condition</span>
+            <span id="city-name">City</span>
+          </div>
+
+          <div class="weather-extra">
+            <span>Humidity: <b id="humidity">--%</b></span>
+            <span>Wind: <b id="wind">-- km/h</b></span>
+            <span>Feels like: <b id="feels">--°</b></span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= NAV GRID ================= -->
+    <section class="nav-grid">
+
+      <div class="nav-card" data-target="todo">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=600&auto=format&fit=crop');"></div>
+        <div class="card-content">
+          <h3>Workflow</h3>
+          <p>Manage Tasks</p>
+        </div>
+      </div>
+
+      <div class="nav-card" data-target="daily">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=600&auto=format&fit=crop');"></div>
+        <div class="card-content">
+          <h3>Daily Plan</h3>
+          <p>Schedule</p>
+        </div>
+      </div>
+
+      <div class="nav-card" data-target="moti">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?q=80&w=600&auto=format&fit=crop');"></div>
+        <div class="card-content">
+          <h3>Motivation</h3>
+          <p>Daily Quote</p>
+        </div>
+      </div>
+
+      <div class="nav-card" data-target="pomodoro">
+        <div class="card-bg" style="background-image:url('https://i.pinimg.com/736x/b9/c8/1b/b9c81b84c7ea196bfb665a815e7fe544.jpg');"></div>
+        <div class="card-content">
+          <h3>Pomodoro</h3>
+          <p>Focus Timer</p>
+        </div>
+      </div>
+
+      <div class="nav-card" data-target="goals">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=600&auto=format&fit=crop');"></div>
+        <div class="card-content">
+          <h3>Goals</h3>
+          <p>Objectives</p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ================= WORKFLOW ================= -->
+  <section class="full-page" id="page-todo">
+    <button class="close-btn">Close</button>
+
+    <div class="workflow-layout">
+
+      <div class="workflow-input-col">
+        <h1>Workflow.</h1>
+        <p class="subtitle">CREATE NEW OBJECTIVE</p>
+
+        <div class="input-group">
+          <input type="text" id="todo-summary" placeholder="Task summary..." />
+        </div>
+
+        <div class="input-group">
+          <textarea id="todo-desc" placeholder="Detailed description..."></textarea>
+        </div>
+
+        <div class="urgent-check">
+          <input type="checkbox" id="todo-urgent" />
+          <label for="todo-urgent">
+            If It's <span style="color:#ff6b6b;">Urgent</span>
+          </label>
+        </div>
+
+        <button id="add-todo-btn" class="action-btn">Submit</button>
+      </div>
+
+      <div class="workflow-list-col">
+        <h2>Current Sprint</h2>
+        <div class="todo-list-container" id="todo-list"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= DAILY ================= -->
+  <section class="full-page" id="page-daily">
+    <button class="close-btn">Close</button>
+
+    <div class="daily-layout">
+      <div class="daily-header">
+        <h1>Daily Planner</h1>
+        <p id="daily-date">TUESDAY, DEC 23</p>
+      </div>
+
+      <div class="time-slots-container" id="time-slots"></div>
+    </div>
+  </section>
+
+  <!-- ================= MOTIVATION ================= -->
+  <section class="full-page flex-center" id="page-moti">
+    <button class="close-btn">Close</button>
+
+    <div class="quote-card">
+      <i class="ri-double-quotes-l quote-icon"></i>
+      <h1 id="quote-text">Loading inspiration...</h1>
+      <p id="quote-author">- Please wait</p>
+    </div>
+  </section>
+
+  <!-- ================= POMODORO ================= -->
+  <section class="full-page flex-center" id="page-pomodoro">
+    <button class="close-btn">Close</button>
+
+    <div class="pomo-card">
+      <div class="pomo-toggle">
+        <span class="active">FOCUS</span>
+        <span>ZEN</span>
+      </div>
+
+      <div class="timer-display">
+        <span class="status-dot"></span> STATIONARY
+        <h1 id="pomo-time">25:00</h1>
+      </div>
+
+      <div class="pomo-actions">
+        <button id="pomo-reset" class="secondary-btn">RESET</button>
+        <button id="pomo-start" class="primary-btn">START SESSION</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GOALS ================= -->
+  <section class="full-page flex-center" id="page-goals">
+    <button class="close-btn">Close</button>
+
+    <div class="goals-card">
+      <div class="goals-header">
+        <p class="subtitle">OBJECTIVE</p>
+        <h1>Daily Goals.</h1>
+        <span class="goals-date" id="goals-date-display">JANUARY 16</span>
+      </div>
+
+      <div class="progress-section">
+        <div class="progress-labels">
+          <span>DAILY COMPLETION</span>
+          <span id="progress-text">0%</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <div class="goals-list-container">
+        <div id="goals-empty" class="empty-state">
+          <i class="ri-clipboard-line"></i>
+          <p>Your agenda is clear.</p>
+          <small>Capture your first objective below.</small>
+        </div>
+        <ul id="goals-ul"></ul>
+      </div>
+
+      <div class="goals-input-area">
+        <input type="text" id="goal-input" placeholder="What needs to be done today?" />
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ================= NAME MODAL ================= -->
+<div class="modal-overlay" id="name-modal">
+  <div class="modal-box">
+    <h2>Welcome Back</h2>
+    <input type="text" id="username-input" placeholder="Enter your name" />
+    <button id="save-name-btn">Continue</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
